@@ -47,7 +47,7 @@ class Calculator {
     
     //multiply an array
     func multiply(_ Input: [Int]) -> Int {
-        var product : Int = 0;
+        var product : Int = 1;
         for num in Input {
             product = product * num
         }
@@ -69,7 +69,7 @@ class Calculator {
     }
     
     //mathOp an array
-    func mathOp( args: [Int], beg : Int, op: (Int, Int) -> Int) -> Int {
+    func mathOp(args: [Int], beg : Int, op: (Int, Int) -> Int) -> Int {
         var product : Int = 0;
         var beg2 : Int = beg;
         for num in args {
@@ -80,15 +80,32 @@ class Calculator {
     }
     
     //add coordinates (tuples)
-    func add(lhs: (Int,Int), rhs: (Int,Int) ) -> (Int, Int) {
-        let tup : (x: Int, y: Int) = (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    func add(lhs: (Int, Int), rhs: (Int, Int) ) -> (Int, Int) {
+        var tup = (0, 0);
+        tup.0 = lhs.0 + rhs.0
+        tup.1 = lhs.1 + rhs.1
         return tup
     }
     
-    func subtract(lhs: (x: Int, y: Int), rhs: (x: Int, y: Int)) -> (Int, Int) {
-        let tup : (Int, Int) = (lhs.x - rhs.x, lhs.y - rhs.y)
+    //subtract coordinates (tuples)
+    func subtract(lhs a:(Int, Int), rhs b:(Int, Int)) -> (Int, Int) {
+        var tup = (0, 0)
+        tup.0 = a.0 - b.0
+        tup.1 = a.1 - b.1
         return tup
     }
 
+    //add in a dictionary
+    func add(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        let x : Int = lhs["x"]! + rhs["x"]!
+        let y : Int = lhs["y"]! + rhs["y"]!
+        return ["x": x, "y": y]
+    }
     
+    //subtract in a dictionary
+    func subtract(lhs: [String:Int], rhs: [String:Int]) -> [String:Int] {
+        let x : Int = lhs["x"]! - rhs["x"]!
+        let y : Int = lhs["y"]! - rhs["y"]!
+        return ["x": x, "y": y]
+    }
 }
